@@ -18,4 +18,12 @@ class Product(models.Model):
     category = models.ManyToManyField(Category)
 
 
+class Review(models.Model):
+    text = models.TextField()
+    created_date = models.DateTimeField(auto_now_add=True)
+
+    ''' product '''
+    product = models.ForeignKey('Product', on_delete=models.CASCADE)
+
+
 

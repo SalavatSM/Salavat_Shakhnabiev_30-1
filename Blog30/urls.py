@@ -20,17 +20,22 @@ from django.conf.urls.static import static
 
 from Blog30 import settings
 from posts.views import hello_view, now_date_view, goodbye_view
-from products.views import main_view, products_view, categories_view, product_detail_view
+from products import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', main_view),
+    path('', views.main_view),
     path('hello/', hello_view),
     path('now_date/', now_date_view),
     path('goodbye/', goodbye_view),
-    path('products/', products_view),
-    path('products/<int:id>/', product_detail_view),
-    path('categories/', categories_view)
+
+    path('products/', views.products_view),
+    path('products/<int:id>/', views.product_detail_view),
+    path('products/create/', views.product_create_view),
+    path('products/categories/create', views.category_create_view),
+    path('products/review/create', views.review_create_view),
+
+    path('categories/', views.categories_view)
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -20,7 +20,7 @@
             <img src="/media/{{ product.image }}/" alt="">
         </div>
         <div class="info">
-            <h1>{{ product.title }} Rate: {{ product.rate }}</h1>
+            <h1>{{ product.title }} {{ product.rate }}</h1>
             <h4>{{ product.description }}</h4>
             <div class="dates">
                 <h4>{{ product.created_date }}</h4>
@@ -28,4 +28,10 @@
             </div>
         </div>
     </div>
+    <h1>Review Create Form</h1>
+    <form action="/products/review/create/" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Create">
+    </form>
 {% endblock %}
