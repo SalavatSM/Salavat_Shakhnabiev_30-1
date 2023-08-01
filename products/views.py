@@ -22,7 +22,8 @@ def products_view(request):
         products = Product.objects.all()
 
         context_data = {
-            'products': products
+            'products': products,
+            'user': request.user
         }
         return render(request, 'products/products.html', context=context_data)
 
